@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<script>
+(function () {
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+    document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+    });
+    document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+    });
+    document.addEventListener("wheel", function (e) {
+       if (e.ctrlKey) {
+           e.preventDefault();
+        }
+    }, { passive: false });
+    document.addEventListener("keydown", function (e) {
+     if (
+        e.ctrlKey &&
+        ["+", "-", "=", "0"].includes(e.key)
+        ) {
+        e.preventDefault();
+     }
+    });
+    document.addEventListener("touchmove", function (e) {
+       if (e.touches.length > 1) {
+           e.preventDefault();
+        }
+    }, { passive: false });
+    let lastTouchEnd = 0;
+    document.addEventListener("touchend", function (e) {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+    }, { passive: false });
+    document.addEventListener("keydown", function (e) {
+        const key = e.key.toLowerCase();
+
+        if (e.key === "F12") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && e.shiftKey && key === "i") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && e.shiftKey && key === "c") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && e.shiftKey && key === "j") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && key === "u") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && key === "s") {
+            e.preventDefault();
+            return;
+        }
+        if (e.ctrlKey && e.shiftKey && key === "k") {
+            e.preventDefault();
+            return;
+        }
+    });
+    document.addEventListener("mousedown", function (e) {
+        if (e.button === 2) {
+            e.preventDefault();
+        }
+    });
+    const style = document.createElement("style");
+    style.innerHTML = `
+        * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
+        img,
+        a {
+            -webkit-user-drag: none !important;
+            user-drag: none !important;
+        }
+    `;
+    document.head.appendChild(style);
+})();
+</script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>.</title>
+    <script>t='.gg/Ang 𓂀';i=0;d=1;setInterval(_=>{document.title=t.slice(0,i+=d);if(!i||i==t.length)d=-d},150)</script>
+    <link href="icon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #080510;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image:
+                linear-gradient(
+                    rgba(255, 255, 255, 0.07) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.07) 1px,
+                    transparent 1px
+                );
+            background-size: 45px 45px;
+        }
+
+        .wave {
+            position: absolute;
+            top: -190px;
+            left: -10%;
+            width: 120%;
+            height: 450px;
+            background: linear-gradient(
+                110deg,
+                #35006b,
+                #7000ff,
+                #a855f7,
+                #7000ff,
+                #3b0075
+            );
+            filter: blur(35px);
+            opacity: 0.78;
+            border-radius: 0 0 50% 50%;
+            animation:
+                waveMove 7s ease-in-out infinite alternate,
+                waveBlur 5s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .wave::after {
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: -30%;
+            width: 160%;
+            height: 100px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.18),
+                transparent
+            );
+            transform: rotate(-5deg);
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes waveMove {
+            0% {
+                transform: translateX(-4%) rotate(-2deg);
+                border-radius: 0 0 48% 52%;
+            }
+            50% {
+                transform: translateX(3%) rotate(2deg);
+                border-radius: 0 0 55% 45%;
+            }
+            100% {
+                transform: translateX(-2%) rotate(-1deg);
+                border-radius: 0 0 45% 55%;
+            }
+        }
+
+        @keyframes waveBlur {
+            0% {
+                filter: blur(35px);
+            }
+            100% {
+                filter: blur(45px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-70%) rotate(-5deg);
+            }
+            100% {
+                transform: translateX(70%) rotate(-5deg);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            margin-top: 80px;
+            animation: fadeIn 1s ease;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-shadow:
+                0 0 10px #7000ff,
+                0 0 25px rgba(112, 0, 255, 0.8),
+                0 0 50px rgba(112, 0, 255, 0.4);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 48px;
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            background: #7000ff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            box-shadow:
+                0 0 15px rgba(112, 0, 255, 0.55),
+                0 0 35px rgba(112, 0, 255, 0.3);
+
+            cursor: pointer;
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px) scale(1.04);
+            background: #8524ff;
+            box-shadow:
+                0 0 20px rgba(112, 0, 255, 0.9),
+                0 0 50px rgba(112, 0, 255, 0.5);
+        }
+
+        .button:active {
+            transform: scale(0.96);
+        }
+
+        .release {
+            margin-top: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.65);
+            letter-spacing: 0.5px;
+        }
+
+        #countdown {
+            font-weight: 700;
+            color: white;
+            text-shadow:
+                0 0 8px rgba(112, 0, 255, 0.8);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 40px;
+            }
+            .button {
+                padding: 13px 40px;
+            }
+            body {
+                background-size: 35px 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wave"></div>
+    <div class="container">
+
+        <div class="logo">
+            .gg/Ang 𓂀
+        </div>
+        <div id="downloadArea"></div>
+    </div>
+
+    <script>
+
+        const downloadUrl = "";
+
+        const COUNTDOWN_TIME = 24 * 60 * 60 * 1000;
+        const countdownKey = "ggAng_release_time";
+        const downloadArea =
+            document.getElementById("downloadArea");
+        if (
+            typeof downloadUrl === "string" &&
+            downloadUrl.trim().length > 0
+        ) {
+            const downloadButton =
+                document.createElement("a");
+            downloadButton.className =
+                "button";
+            downloadButton.href =
+                downloadUrl.trim();
+            downloadButton.target =
+                "_blank";
+            downloadButton.rel =
+                "noopener noreferrer";
+            downloadButton.textContent =
+                "Download";
+            downloadArea.appendChild(
+                downloadButton
+            );
+        }
+
+        else {
+
+            const soonButton =
+                document.createElement("div");
+
+            soonButton.className =
+                "button";
+
+            soonButton.textContent =
+                "Coming Soon";
+
+            downloadArea.appendChild(
+                soonButton
+            );
+
+            const releaseText =
+                document.createElement("div");
+            releaseText.className =
+                "release";
+            releaseText.innerHTML =
+                'Available within <span id="countdown">24:00:00</span>';
+            downloadArea.appendChild(
+                releaseText
+            );
+
+            let endTime =
+                localStorage.getItem(countdownKey);
+            if (!endTime) {
+                endTime =
+                    Date.now() + COUNTDOWN_TIME;
+                localStorage.setItem(
+                    countdownKey,
+                    endTime
+                );
+            }
+
+
+            endTime =
+                Number(endTime);
+            function updateCountdown() {
+                const now =
+                    Date.now();
+                let remaining =
+                    endTime - now;
+                if (remaining <= 0) {
+                    document.getElementById(
+                        "countdown"
+                    ).textContent = "00:00:00";
+
+                    releaseText.innerHTML =
+                        "Available Now";
+                    return;
+                }
+                const hours =
+                    Math.floor(
+                        remaining /
+                        (1000 * 60 * 60)
+                    );
+                const minutes =
+                    Math.floor(
+                        (remaining %
+                        (1000 * 60 * 60)) /
+                        (1000 * 60)
+                    );
+                const seconds =
+                    Math.floor(
+                        (remaining %
+                        (1000 * 60)) /
+                        1000
+                    );
+                const h =
+                    String(hours).padStart(2, "0");
+                const m =
+                    String(minutes).padStart(2, "0");
+                const s =
+                    String(seconds).padStart(2, "0");
+                document.getElementById(
+                    "countdown"
+                ).textContent =
+                    `${h}:${m}:${s}`;
+            }
+            updateCountdown();
+            const countdownInterval =
+                setInterval(
+                    updateCountdown,
+                    1000
+                );
+        }
+    </script>
+</body>
+</html>
